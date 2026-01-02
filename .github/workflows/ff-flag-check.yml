@@ -1,0 +1,38 @@
+# FF Flag 검사 — 시험·타입 검사는 늘 돌고, FF 연결 변수가 있으면 Flag 스캔 결과를 OIDC로 FF에 올린다(GitHub App 모드에서는 FF Check Run이 대신한다)
+name: ff-flag-check
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm install --no-audit --no-fund
+      - run: npm test
+      - run: npm run typecheck
+  ff-scan:
+    if: ${{ vars.FF_BASE_URL != '' && vars.FF_SCANNER_PACKAGE != '' }}
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Flag 스캔(v2)
+        run: npx --yes --package="${{ vars.FF_SCANNER_PACKAGE }}" ff-flag-scan --repo . --url "${{ github.server_url }}/${{ github.repository }}" --ref "${{ github.sha }}" --path packages --out manifest.json
+      - name: FF에 올리기(OIDC)
+        env:
+          FF_BASE_URL: ${{ vars.FF_BASE_URL }}
+        run: |
+          TOKEN=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=ff-flag-scan" | jq -r .value)
+          jq -n --slurpfile m manifest.json --arg t "$TOKEN" '{manifest: $m[0], oidcToken: $t}' > body.json
+          curl -sS -f -X POST -H "Content-Type: application/json" --data @body.json "$FF_BASE_URL/api/flag-code/scans/upload"

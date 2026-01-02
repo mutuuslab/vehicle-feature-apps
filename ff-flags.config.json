@@ -1,0 +1,53 @@
+{
+  "repository": "https://github.com/mutuuslab/vehicle-feature-apps",
+  "provider": "GITHUB",
+  "defaultBranch": "main",
+  "scanPaths": [
+    "packages"
+  ],
+  "packages": [
+    {
+      "name": "adas",
+      "path": "packages/adas"
+    },
+    {
+      "name": "ivi",
+      "path": "packages/ivi"
+    },
+    {
+      "name": "body",
+      "path": "packages/body"
+    },
+    {
+      "name": "chassis",
+      "path": "packages/chassis"
+    },
+    {
+      "name": "powertrain",
+      "path": "packages/powertrain"
+    },
+    {
+      "name": "safety",
+      "path": "packages/safety"
+    },
+    {
+      "name": "connectivity",
+      "path": "packages/connectivity"
+    },
+    {
+      "name": "platform",
+      "path": "packages/platform"
+    }
+  ],
+  "sdkMethods": [
+    "getBooleanValue",
+    "getBooleanDetails",
+    "getStringValue",
+    "getNumberValue",
+    "getObjectValue",
+    "isEnabled",
+    "getVariant"
+  ],
+  "flagConstants": "packages/<패키지>/src/features/feat-NNNNN/flags.ts",
+  "generatedBy": "Feature Platform tools/flag-code/generate-vehicle-apps.ts"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "vehicle-feature-apps",
+  "private": true,
+  "description": "차량 기능 앱 — Feature Flag로 켜고 끄는 차량 기능 예시(시연용 생성 코드)",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test \"packages/**/*.test.ts\"",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "5.9.3"
+  }
+}
