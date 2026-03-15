@@ -4,4 +4,4 @@
 
 | Feature | Version | 이름 | Flag |
 | --- | --- | --- | --- |
-| FEAT-00001 | 2.1.0 | 원격 스마트 주차 보조 | `adas_00001_enable`, `adas_00001_param`, `adas_00001_signal` |
+| FEAT-00001 | 2.2.0 | 원격 스마트 주차 보조 | `adas_00001_enable`, `adas_00001_param`, `adas_00001_signal` |
