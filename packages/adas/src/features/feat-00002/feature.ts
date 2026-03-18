@@ -1,11 +1,11 @@
 // 시연용 생성 코드 — 고객 차량 SW가 아닙니다. Feature Platform 등록 데이터로 만든 예시 구현입니다.
-// FEAT-00002 1.5.0 「주차 충돌방지 보조」 — 주차 중 장애물 충돌 위험 시 제동 지원
+// FEAT-00002 1.6.0 「주차 충돌방지 보조」 — 주차 중 장애물 충돌 위험 시 제동을 지원하며, 장애물 감지 신뢰도 저하 시 경고·제동 제한 조건을 명시
 // 모든 분기는 flag-guards.ts의 함수로만 Flag를 읽는다. 오류·시간 초과는 꺼짐(기존 경로)으로 간다.
 import { flagOn, guardAllows, type FeatureDeps } from '../../../../runtime/src/flag-client.ts';
 import { ADAS_00002_ENABLE, ADAS_00002_SIGNAL } from './flags.ts';
 import { adas00002EnableEnabled, adas00002SignalEnabled } from './flag-guards.ts';
 
-export const FEATURE = { featureId: 'FEAT-00002', version: '1.5.0', name: '주차 충돌방지 보조', safetyRelated: true } as const;
+export const FEATURE = { featureId: 'FEAT-00002', version: '1.6.0', name: '주차 충돌방지 보조', safetyRelated: true } as const;
 
 /** 켜짐 판단 — 안전 관련 Feature(F2 이상)라 차량 로컬 Guard도 허용해야 켠다 */
 async function enabled(d: FeatureDeps, flagKey: string, read: () => Promise<boolean>): Promise<boolean> {
