@@ -1,11 +1,11 @@
 // 시연용 생성 코드 — 고객 차량 SW가 아닙니다. Feature Platform 등록 데이터로 만든 예시 구현입니다.
-// FEAT-00004 4.0.1 「고속도로 주행 보조 2」 — 고속도로에서 차간거리·차로·차선변경 보조
+// FEAT-00004 4.1.0 「고속도로 주행 보조 2」 — 고속도로에서 차간거리·차로·차선변경을 보조하며, 차로변경 실행 전 운전자 확인 조건을 명시
 // 모든 분기는 flag-guards.ts의 함수로만 Flag를 읽는다. 오류·시간 초과는 꺼짐(기존 경로)으로 간다.
 import { flagOn, guardAllows, type FeatureDeps } from '../../../../runtime/src/flag-client.ts';
 import { ADAS_00004_ENABLE, ADAS_00004_PARAM } from './flags.ts';
 import { adas00004EnableEnabled, adas00004ParamEnabled } from './flag-guards.ts';
 
-export const FEATURE = { featureId: 'FEAT-00004', version: '4.0.1', name: '고속도로 주행 보조 2', safetyRelated: true } as const;
+export const FEATURE = { featureId: 'FEAT-00004', version: '4.1.0', name: '고속도로 주행 보조 2', safetyRelated: true } as const;
 
 /** 켜짐 판단 — 안전 관련 Feature(F2 이상)라 차량 로컬 Guard도 허용해야 켠다 */
 async function enabled(d: FeatureDeps, flagKey: string, read: () => Promise<boolean>): Promise<boolean> {
