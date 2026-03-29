@@ -9,3 +9,4 @@
 | FEAT-00003 | 3.3.0 | 서라운드 뷰 모니터 | `adas_00003_enable`, `adas_00003_signal` |
 | FEAT-00004 | 4.1.0 | 고속도로 주행 보조 2 | `adas_00004_enable`, `adas_00004_param` |
 | FEAT-00005 | 5.5.0 | 스마트 크루즈 컨트롤 | `adas_00005_enable`, `adas_00005_signal` |
+| FEAT-00010 | 2.0.0 | 운전자 모니터링 시스템 | `adas_00010_enable`, `adas_00010_param` |
