@@ -11,3 +11,4 @@
 | FEAT-00005 | 5.5.0 | 스마트 크루즈 컨트롤 | `adas_00005_enable`, `adas_00005_signal` |
 | FEAT-00010 | 2.0.0 | 운전자 모니터링 시스템 | `adas_00010_enable`, `adas_00010_param` |
 | FEAT-00015 | 1.2.0 | 지능형 속도 제한 보조 | `adas_00015_enable`, `adas_00015_param` |
+| FEAT-00163 | 3.8.0 | 차로 유지 보조 | `adas_00163_enable`, `adas_00163_signal` |
