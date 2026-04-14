@@ -13,4 +13,5 @@
 | FEAT-00015 | 1.2.0 | 지능형 속도 제한 보조 | `adas_00015_enable`, `adas_00015_param` |
 | FEAT-00022 | 1.0.0 | 전방 안전거리 3단계 | `care_00022_signal`, `care_00022_param` |
 | FEAT-00025 | 1.0.0 | 전방 안전거리 확대 | `adas_00025_signal`, `adas_00025_param` |
+| FEAT-00028 | 1.0.0 | 전방 안전거리 확대 | `adas_00028_signal`, `adas_00028_param` |
 | FEAT-00163 | 3.8.0 | 차로 유지 보조 | `adas_00163_enable`, `adas_00163_signal` |
