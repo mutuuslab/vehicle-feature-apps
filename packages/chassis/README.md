@@ -6,3 +6,4 @@
 | --- | --- | --- | --- |
 | FEAT-00023 | 1.0.0 | 급가속 억제 | `chassis_00023_enable`, `chassis_00023_param` |
 | FEAT-00026 | 1.0.0 | 급가속 억제 | `chassis_00026_enable`, `chassis_00026_param` |
+| FEAT-00029 | 1.0.0 | 급가속 억제 | `chassis_00029_enable`, `chassis_00029_param` |
