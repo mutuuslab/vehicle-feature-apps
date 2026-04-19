@@ -9,3 +9,4 @@
 | FEAT-00024 | 1.0.0 | IC·JC 경로 사전안내 | `ivi_00024_guide`, `ivi_00024_signal` |
 | FEAT-00027 | 1.0.0 | 고속도로 IC·JC 상세 안내 | `ivi_00027_detail`, `ivi_00027_banner`, `ivi_00027_voice` |
 | FEAT-00030 | 1.0.1 | 고속도로 IC·JC 상세 안내 | `ivi_00030_enable`, `ivi_00030_signal` |
+| FEAT-00033 | 1.0.1 | 고속도로 IC·JC 상세 안내 | `ivi_00033_enable`, `ivi_00033_signal` |
