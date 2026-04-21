@@ -13,3 +13,4 @@
 | FEAT-00175 | 1.0.0 | 증강현실 HUD 내비게이션 | `ivi_00175_enable`, `ivi_00175_signal` |
 | FEAT-00176 | 1.0.0 | 증강현실 HUD 내비게이션 | `ivi_00176_enable`, `ivi_00176_signal` |
 | FEAT-00177 | 1.0.0 | 증강현실 HUD 내비게이션 | `ivi_00177_enable`, `ivi_00177_signal` |
+| FEAT-00178 | 1.0.0 | 증강현실 HUD 내비게이션 | `ivi_00178_enable`, `ivi_00178_signal` |
