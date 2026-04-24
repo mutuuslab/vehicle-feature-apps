@@ -16,3 +16,4 @@
 | FEAT-00028 | 1.0.0 | 전방 안전거리 확대 | `adas_00028_signal`, `adas_00028_param` |
 | FEAT-00031 | 1.0.0 | 전방 안전거리 확대 | `adas_00031_signal`, `adas_00031_param` |
 | FEAT-00163 | 3.8.0 | 차로 유지 보조 | `adas_00163_enable`, `adas_00163_signal` |
+| FEAT-00183 | 5.4.2 | 스마트 크루즈 컨트롤 | `adas_00183_enable`, `adas_00183_signal` |
