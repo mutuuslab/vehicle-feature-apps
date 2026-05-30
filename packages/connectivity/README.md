@@ -5,3 +5,4 @@
 | Feature | Version | 이름 | Flag |
 | --- | --- | --- | --- |
 | FEAT-00011 | 1.3.0 | 스마트폰 디지털 키 | `connectivity_00011_dtc` |
+| FEAT-00064 | 1.3.0 | 스마트폰 디지털 키 | `connectivity_00064_enable`, `connectivity_00064_dtc` |
