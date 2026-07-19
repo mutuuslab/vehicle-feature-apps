@@ -13,6 +13,7 @@
 | FEAT-00081 | 2.5.0 | 후석 엔터테인먼트 Gen1 | `ivi_00081_enable`, `ivi_00081_enable_2` |
 | FEAT-00098 | 1.0.0 | 증강현실 HUD 내비게이션 | `ivi_00098_enable`, `ivi_00098_signal` |
 | FEAT-00136 | 2.5.0 | 후석 엔터테인먼트 Gen1 | `ivi_00136_enable`, `ivi_00136_enable_2` |
+| FEAT-00137 | 2.5.0 | 후석 엔터테인먼트 Gen1 | `ivi_00137_enable`, `ivi_00137_enable_2` |
 | FEAT-00175 | 1.0.0 | 증강현실 HUD 내비게이션 | `ivi_00175_enable`, `ivi_00175_signal` |
 | FEAT-00176 | 1.0.0 | 증강현실 HUD 내비게이션 | `ivi_00176_enable`, `ivi_00176_signal` |
 | FEAT-00177 | 1.0.0 | 증강현실 HUD 내비게이션 | `ivi_00177_enable`, `ivi_00177_signal` |
