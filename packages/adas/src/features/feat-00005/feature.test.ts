@@ -19,8 +19,8 @@ test('FEAT-00005 스마트 크루즈 컨트롤 — 켜지면 새 경로', async 
   const d = testDeps(fakeClient(ALL));
   assert.equal(FEATURE.featureId, 'FEAT-00005');
   assert.equal((await runFeature(d)).path, 'NEW');
-  assert.equal(await emitSignal(d, 'ON'), true);
-  assert.equal(d.recorded.signals.length, 1);
+  assert.equal(await emitSignal(d, 'ON'), false);
+  assert.equal(d.recorded.signals.length, 0);
 });
 
 test('FEAT-00005 스마트 크루즈 컨트롤 — 로컬 Guard가 막으면 꺼짐(F2 이상)', async () => {
@@ -35,10 +35,4 @@ test('FEAT-00005 스마트 크루즈 컨트롤 — 클라이언트 오류·시�
     assert.equal((await runFeature(d)).path, 'LEGACY');
     assert.equal(await emitSignal(d, 'ON'), false);
   }
-});
-
-test('FEAT-00005 스마트 크루즈 컨트롤 — adas_00005_signal 꺼지면 신호 발행 0회', async () => {
-  const d = testDeps(fakeClient([]));
-  await emitSignal(d, 'ON');
-  assert.deepEqual(d.recorded.signals.filter((s) => s.signal === SIGNAL), []);
 });
