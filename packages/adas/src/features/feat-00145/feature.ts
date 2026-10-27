@@ -3,7 +3,7 @@
 // 모든 분기는 flag-guards.ts의 함수로만 Flag를 읽는다. 오류·시간 초과는 꺼짐(기존 경로)으로 간다.
 import { flagOn, guardAllows, type FeatureDeps } from '../../../../runtime/src/flag-client.ts';
 import { ADAS_00145_ENABLE, ADAS_00145_SIGNAL } from './flags.ts';
-import { adas00145EnableEnabled, adas00145SignalEnabled } from './flag-guards.ts';
+import { adas00145EnableEnabled } from './flag-guards.ts';
 
 export const FEATURE = { featureId: 'FEAT-00145', version: '5.5.0', name: '스마트 크루즈 컨트롤', safetyRelated: true } as const;
 
@@ -20,9 +20,10 @@ export async function runFeature(d: FeatureDeps): Promise<{ path: 'NEW' | 'LEGAC
 }
 
 export const SIGNAL = 'feat-00145.adas_00145_signal';
-/** Signal 제어점(adas_00145_signal) — 켜졌을 때만 신호를 발행한다 */
+/** Signal 제어점(adas_00145_signal) — 정리됨: 신호를 발행하지 않는다 */
 export async function emitSignal(d: FeatureDeps, value: string): Promise<boolean> {
-  const on = await enabled(d, ADAS_00145_SIGNAL, () => adas00145SignalEnabled(d.client, { targetingKey: d.vin }));
-  if (on) d.signals.publish(SIGNAL, value);
-  return on;
+  // 정리: 신호 발행을 걷어냈다(ADAS_00145_SIGNAL)
+  void d;
+  void value;
+  return false;
 }
