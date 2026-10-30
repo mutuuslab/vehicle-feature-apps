@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { denyAll, failingClient, fakeClient, hangingClient, testDeps } from '../../../../runtime/src/testing.ts';
 import { IVI_00081_ENABLE, IVI_00081_ENABLE_2 } from './flags.ts';
-import { FEATURE, runFeature, runFeature2 } from './feature.ts';
+import { FEATURE, runFeature, runFeature2, regionalBanner } from './feature.ts';
 
 const ALL = [IVI_00081_ENABLE, IVI_00081_ENABLE_2];
 
@@ -33,4 +33,10 @@ test('FEAT-00081 후석 엔터테인먼트 Gen1 — 클라이언트 오류·시�
     assert.equal((await runFeature(d)).path, 'LEGACY');
     assert.equal((await runFeature2(d)).path, 'LEGACY');
   }
+});
+
+test('FEAT-00081 후석 엔터테인먼트 Gen1 — 지역 배너 실험은 기본 꺼짐', async () => {
+  const d = testDeps(fakeClient(['ivi_kr_banner']));
+  assert.deepEqual(await regionalBanner(d, 'kr'), { banner: true, compact: false });
+  assert.deepEqual(await regionalBanner(d, 'eu'), { banner: false, compact: false });
 });
