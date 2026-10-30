@@ -24,3 +24,11 @@ export async function runFeature2(d: FeatureDeps): Promise<{ path: 'NEW' | 'LEGA
   const on = await enabled(d, IVI_00081_ENABLE_2, () => ivi00081Enable2Enabled(d.client, { targetingKey: d.vin }));
   return { path: on ? 'NEW' : 'LEGACY', flagKey: IVI_00081_ENABLE_2 };
 }
+
+/** 지역별 안내 배너 실험 — 지역 코드로 키를 조합한다 */
+export async function regionalBanner(d: FeatureDeps, region: 'kr' | 'eu'): Promise<{ banner: boolean; compact: boolean }> {
+  const ctx = { targetingKey: d.vin };
+  const banner = await flagOn(() => d.client.getBooleanValue(`ivi_${region}_banner`, false, ctx), d.timeoutMs);
+  const compact = await flagOn(() => d.client.getBooleanValue(`ivi_${region}_compact`, false, ctx), d.timeoutMs);
+  return { banner, compact };
+}
