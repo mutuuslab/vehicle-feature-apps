@@ -2,8 +2,8 @@
 // FEAT-00001 2.2.0 「원격 스마트 주차 보조」 — 차량 외부에서 전·후진 주차를 제어하고, 원격 조작 입력 해제 시 차량 정지 조건을 명시
 // 모든 분기는 flag-guards.ts의 함수로만 Flag를 읽는다. 오류·시간 초과는 꺼짐(기존 경로)으로 간다.
 import { flagOn, guardAllows, type FeatureDeps } from '../../../../runtime/src/flag-client.ts';
-import { ADAS_00001_ENABLE, ADAS_00001_PARAM, ADAS_00001_SIGNAL } from './flags.ts';
-import { adas00001EnableEnabled, adas00001ParamEnabled, adas00001SignalEnabled } from './flag-guards.ts';
+import { ADAS_00001_RSPA, ADAS_00001_PARAM, ADAS_00001_SIGNAL } from './flags.ts';
+import { adas00001RspaEnabled, adas00001ParamEnabled, adas00001SignalEnabled } from './flag-guards.ts';
 
 export const FEATURE = { featureId: 'FEAT-00001', version: '2.2.0', name: '원격 스마트 주차 보조', safetyRelated: true } as const;
 
@@ -13,10 +13,10 @@ async function enabled(d: FeatureDeps, flagKey: string, read: () => Promise<bool
   return guardAllows(d.localGuard, flagKey, d.vin);
 }
 
-/** Flag 제어점(adas_00001_enable) — 켜지면 새 기능 경로, 꺼지면 기존 경로 */
+/** Flag 제어점(adas_00001_rspa) — 켜지면 새 기능 경로, 꺼지면 기존 경로 */
 export async function runFeature(d: FeatureDeps): Promise<{ path: 'NEW' | 'LEGACY'; flagKey: string }> {
-  const on = await enabled(d, ADAS_00001_ENABLE, () => adas00001EnableEnabled(d.client, { targetingKey: d.vin }));
-  return { path: on ? 'NEW' : 'LEGACY', flagKey: ADAS_00001_ENABLE };
+  const on = await enabled(d, ADAS_00001_RSPA, () => adas00001RspaEnabled(d.client, { targetingKey: d.vin }));
+  return { path: on ? 'NEW' : 'LEGACY', flagKey: ADAS_00001_RSPA };
 }
 
 export const PARAM_DEFAULT = 49;
