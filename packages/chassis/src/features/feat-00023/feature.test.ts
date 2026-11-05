@@ -3,10 +3,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { denyAll, failingClient, fakeClient, hangingClient, testDeps } from '../../../../runtime/src/testing.ts';
-import { CHASSIS_00023_ENABLE, CHASSIS_00023_PARAM } from './flags.ts';
+import { CARE_00023_LIMIT, CHASSIS_00023_PARAM } from './flags.ts';
 import { FEATURE, runFeature, applyParameters, PARAM_DEFAULT, PARAM_RANGE } from './feature.ts';
 
-const ALL = [CHASSIS_00023_ENABLE, CHASSIS_00023_PARAM];
+const ALL = [CARE_00023_LIMIT, CHASSIS_00023_PARAM];
 
 test('FEAT-00023 급가속 억제 — 기본값 OFF(Flag 없음)는 기존 경로', async () => {
   const d = testDeps(fakeClient([]), { calibration: { [CHASSIS_00023_PARAM]: 31 } });
