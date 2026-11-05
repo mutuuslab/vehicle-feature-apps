@@ -2,8 +2,8 @@
 // FEAT-00002 1.6.0 「주차 충돌방지 보조」 — 주차 중 장애물 충돌 위험 시 제동을 지원하며, 장애물 감지 신뢰도 저하 시 경고·제동 제한 조건을 명시
 // 모든 분기는 flag-guards.ts의 함수로만 Flag를 읽는다. 오류·시간 초과는 꺼짐(기존 경로)으로 간다.
 import { flagOn, guardAllows, type FeatureDeps } from '../../../../runtime/src/flag-client.ts';
-import { ADAS_00002_ENABLE, ADAS_00002_SIGNAL } from './flags.ts';
-import { adas00002EnableEnabled, adas00002SignalEnabled } from './flag-guards.ts';
+import { ADAS_00002_PCA, ADAS_00002_SIGNAL } from './flags.ts';
+import { adas00002PcaEnabled, adas00002SignalEnabled } from './flag-guards.ts';
 
 export const FEATURE = { featureId: 'FEAT-00002', version: '1.6.0', name: '주차 충돌방지 보조', safetyRelated: true } as const;
 
@@ -13,10 +13,10 @@ async function enabled(d: FeatureDeps, flagKey: string, read: () => Promise<bool
   return guardAllows(d.localGuard, flagKey, d.vin);
 }
 
-/** Flag 제어점(adas_00002_enable) — 켜지면 새 기능 경로, 꺼지면 기존 경로 */
+/** Flag 제어점(adas_00002_pca) — 켜지면 새 기능 경로, 꺼지면 기존 경로 */
 export async function runFeature(d: FeatureDeps): Promise<{ path: 'NEW' | 'LEGACY'; flagKey: string }> {
-  const on = await enabled(d, ADAS_00002_ENABLE, () => adas00002EnableEnabled(d.client, { targetingKey: d.vin }));
-  return { path: on ? 'NEW' : 'LEGACY', flagKey: ADAS_00002_ENABLE };
+  const on = await enabled(d, ADAS_00002_PCA, () => adas00002PcaEnabled(d.client, { targetingKey: d.vin }));
+  return { path: on ? 'NEW' : 'LEGACY', flagKey: ADAS_00002_PCA };
 }
 
 export const SIGNAL = 'feat-00002.adas_00002_signal';

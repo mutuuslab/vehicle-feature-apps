@@ -3,10 +3,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { denyAll, failingClient, fakeClient, hangingClient, testDeps } from '../../../../runtime/src/testing.ts';
-import { ADAS_00002_ENABLE, ADAS_00002_SIGNAL } from './flags.ts';
+import { ADAS_00002_PCA, ADAS_00002_SIGNAL } from './flags.ts';
 import { FEATURE, runFeature, emitSignal, SIGNAL } from './feature.ts';
 
-const ALL = [ADAS_00002_ENABLE, ADAS_00002_SIGNAL];
+const ALL = [ADAS_00002_PCA, ADAS_00002_SIGNAL];
 
 test('FEAT-00002 주차 충돌방지 보조 — 기본값 OFF(Flag 없음)는 기존 경로', async () => {
   const d = testDeps(fakeClient([]));
