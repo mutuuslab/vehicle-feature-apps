@@ -23,7 +23,7 @@
 | FEAT-00067 | 1.2.0 | 지능형 속도 제한 보조 | `adas_00067_enable`, `adas_00067_param` |
 | FEAT-00084 | 5.5.0 | 스마트 크루즈 컨트롤 | `adas_00084_enable`, `adas_00084_signal` |
 | FEAT-00144 | 3.3.0 | 서라운드 뷰 모니터 | `body_00144_svm` |
-| FEAT-00145 | 5.5.0 | 스마트 크루즈 컨트롤 | `adas_00145_enable`, `adas_00145_signal` |
+| FEAT-00145 | 5.5.0 | 스마트 크루즈 컨트롤 | `adas_00145_scc`, `adas_00145_signal` |
 | FEAT-00150 | 5.5.0 | 스마트 크루즈 컨트롤 | `adas_00150_enable`, `adas_00150_signal` |
 | FEAT-00163 | 3.8.0 | 차로 유지 보조 | `adas_00163_enable`, `adas_00163_signal` |
 | FEAT-00183 | 5.5.0 | 스마트 크루즈 컨트롤 | `adas_00183_enable`, `adas_00183_signal` |
