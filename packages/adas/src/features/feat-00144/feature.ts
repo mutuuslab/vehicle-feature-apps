@@ -2,8 +2,8 @@
 // FEAT-00144 3.3.0 「서라운드 뷰 모니터」 — 차량 주변 360도 영상을 운전자에게 제공하고, 저속 주차 중 화면 전환 조건을 명시
 // 모든 분기는 flag-guards.ts의 함수로만 Flag를 읽는다. 오류·시간 초과는 꺼짐(기존 경로)으로 간다.
 import { flagOn, guardAllows, type FeatureDeps } from '../../../../runtime/src/flag-client.ts';
-import { ADAS_00144_ENABLE } from './flags.ts';
-import { adas00144EnableEnabled } from './flag-guards.ts';
+import { BODY_00144_SVM } from './flags.ts';
+import { body00144SvmEnabled } from './flag-guards.ts';
 
 export const FEATURE = { featureId: 'FEAT-00144', version: '3.3.0', name: '서라운드 뷰 모니터', safetyRelated: false } as const;
 
@@ -13,8 +13,8 @@ async function enabled(d: FeatureDeps, flagKey: string, read: () => Promise<bool
   return true;
 }
 
-/** Flag 제어점(adas_00144_enable) — 켜지면 새 기능 경로, 꺼지면 기존 경로 */
+/** Flag 제어점(body_00144_svm) — 켜지면 새 기능 경로, 꺼지면 기존 경로 */
 export async function runFeature(d: FeatureDeps): Promise<{ path: 'NEW' | 'LEGACY'; flagKey: string }> {
-  const on = await enabled(d, ADAS_00144_ENABLE, () => adas00144EnableEnabled(d.client, { targetingKey: d.vin }));
-  return { path: on ? 'NEW' : 'LEGACY', flagKey: ADAS_00144_ENABLE };
+  const on = await enabled(d, BODY_00144_SVM, () => body00144SvmEnabled(d.client, { targetingKey: d.vin }));
+  return { path: on ? 'NEW' : 'LEGACY', flagKey: BODY_00144_SVM };
 }
