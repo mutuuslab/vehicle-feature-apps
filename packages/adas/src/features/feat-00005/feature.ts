@@ -2,8 +2,8 @@
 // FEAT-00005 5.5.0 「스마트 크루즈 컨트롤」 — 선행 차량과의 설정 거리 및 속도를 유지하며, 정지 후 재출발 시 운전자 확인 조건을 명시
 // 모든 분기는 flag-guards.ts의 함수로만 Flag를 읽는다. 오류·시간 초과는 꺼짐(기존 경로)으로 간다.
 import { flagOn, guardAllows, type FeatureDeps } from '../../../../runtime/src/flag-client.ts';
-import { ADAS_00005_ENABLE, ADAS_00005_SIGNAL } from './flags.ts';
-import { adas00005EnableEnabled } from './flag-guards.ts';
+import { ADAS_00005_SCC, ADAS_00005_SIGNAL } from './flags.ts';
+import { adas00005SccEnabled } from './flag-guards.ts';
 
 export const FEATURE = { featureId: 'FEAT-00005', version: '5.5.0', name: '스마트 크루즈 컨트롤', safetyRelated: true } as const;
 
@@ -13,10 +13,10 @@ async function enabled(d: FeatureDeps, flagKey: string, read: () => Promise<bool
   return guardAllows(d.localGuard, flagKey, d.vin);
 }
 
-/** Flag 제어점(adas_00005_enable) — 켜지면 새 기능 경로, 꺼지면 기존 경로 */
+/** Flag 제어점(adas_00005_scc) — 켜지면 새 기능 경로, 꺼지면 기존 경로 */
 export async function runFeature(d: FeatureDeps): Promise<{ path: 'NEW' | 'LEGACY'; flagKey: string }> {
-  const on = await enabled(d, ADAS_00005_ENABLE, () => adas00005EnableEnabled(d.client, { targetingKey: d.vin }));
-  return { path: on ? 'NEW' : 'LEGACY', flagKey: ADAS_00005_ENABLE };
+  const on = await enabled(d, ADAS_00005_SCC, () => adas00005SccEnabled(d.client, { targetingKey: d.vin }));
+  return { path: on ? 'NEW' : 'LEGACY', flagKey: ADAS_00005_SCC };
 }
 
 export const SIGNAL = 'feat-00005.adas_00005_signal';
