@@ -3,10 +3,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { denyAll, failingClient, fakeClient, hangingClient, testDeps } from '../../../../runtime/src/testing.ts';
-import { ADAS_00001_ENABLE, ADAS_00001_PARAM, ADAS_00001_SIGNAL } from './flags.ts';
+import { ADAS_00001_RSPA, ADAS_00001_PARAM, ADAS_00001_SIGNAL } from './flags.ts';
 import { FEATURE, runFeature, applyParameters, emitSignal, PARAM_DEFAULT, PARAM_RANGE, SIGNAL } from './feature.ts';
 
-const ALL = [ADAS_00001_ENABLE, ADAS_00001_PARAM, ADAS_00001_SIGNAL];
+const ALL = [ADAS_00001_RSPA, ADAS_00001_PARAM, ADAS_00001_SIGNAL];
 
 test('FEAT-00001 원격 스마트 주차 보조 — 기본값 OFF(Flag 없음)는 기존 경로', async () => {
   const d = testDeps(fakeClient([]), { calibration: { [ADAS_00001_PARAM]: 54 } });
