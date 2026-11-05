@@ -3,10 +3,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { denyAll, failingClient, fakeClient, hangingClient, testDeps } from '../../../../runtime/src/testing.ts';
-import { ADAS_00005_ENABLE, ADAS_00005_SIGNAL } from './flags.ts';
+import { ADAS_00005_SCC, ADAS_00005_SIGNAL } from './flags.ts';
 import { FEATURE, runFeature, emitSignal, SIGNAL } from './feature.ts';
 
-const ALL = [ADAS_00005_ENABLE, ADAS_00005_SIGNAL];
+const ALL = [ADAS_00005_SCC, ADAS_00005_SIGNAL];
 
 test('FEAT-00005 스마트 크루즈 컨트롤 — 기본값 OFF(Flag 없음)는 기존 경로', async () => {
   const d = testDeps(fakeClient([]));
