@@ -3,10 +3,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { denyAll, failingClient, fakeClient, hangingClient, testDeps } from '../../../../runtime/src/testing.ts';
-import { ADAS_00144_ENABLE } from './flags.ts';
+import { BODY_00144_SVM } from './flags.ts';
 import { FEATURE, runFeature } from './feature.ts';
 
-const ALL = [ADAS_00144_ENABLE];
+const ALL = [BODY_00144_SVM];
 
 test('FEAT-00144 서라운드 뷰 모니터 — 기본값 OFF(Flag 없음)는 기존 경로', async () => {
   const d = testDeps(fakeClient([]));
