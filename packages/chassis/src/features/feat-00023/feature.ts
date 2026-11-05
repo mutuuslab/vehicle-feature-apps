@@ -2,8 +2,8 @@
 // FEAT-00023 1.0.0 「급가속 억제」 — 가속페달을 급격하게 밟아도 구동 토크와 가속도 상승을 완만하게 조절
 // 모든 분기는 flag-guards.ts의 함수로만 Flag를 읽는다. 오류·시간 초과는 꺼짐(기존 경로)으로 간다.
 import { flagOn, guardAllows, type FeatureDeps } from '../../../../runtime/src/flag-client.ts';
-import { CHASSIS_00023_ENABLE, CHASSIS_00023_PARAM } from './flags.ts';
-import { chassis00023EnableEnabled, chassis00023ParamEnabled } from './flag-guards.ts';
+import { CARE_00023_LIMIT, CHASSIS_00023_PARAM } from './flags.ts';
+import { care00023LimitEnabled, chassis00023ParamEnabled } from './flag-guards.ts';
 
 export const FEATURE = { featureId: 'FEAT-00023', version: '1.0.0', name: '급가속 억제', safetyRelated: true } as const;
 
@@ -13,10 +13,10 @@ async function enabled(d: FeatureDeps, flagKey: string, read: () => Promise<bool
   return guardAllows(d.localGuard, flagKey, d.vin);
 }
 
-/** Flag 제어점(chassis_00023_enable) — 켜지면 새 기능 경로, 꺼지면 기존 경로 */
+/** Flag 제어점(care_00023_limit) — 켜지면 새 기능 경로, 꺼지면 기존 경로 */
 export async function runFeature(d: FeatureDeps): Promise<{ path: 'NEW' | 'LEGACY'; flagKey: string }> {
-  const on = await enabled(d, CHASSIS_00023_ENABLE, () => chassis00023EnableEnabled(d.client, { targetingKey: d.vin }));
-  return { path: on ? 'NEW' : 'LEGACY', flagKey: CHASSIS_00023_ENABLE };
+  const on = await enabled(d, CARE_00023_LIMIT, () => care00023LimitEnabled(d.client, { targetingKey: d.vin }));
+  return { path: on ? 'NEW' : 'LEGACY', flagKey: CARE_00023_LIMIT };
 }
 
 export const PARAM_DEFAULT = 27;
